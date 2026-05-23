@@ -21,3 +21,6 @@
 
 ## Done
 - Oppgavetekst lest
+
+## Arbeidsflyt
+Jeg bruker Kanban med kolonnene Backlog, To do, In progress, In review og Done. Oppgaver flyttes gradvis gjennom tavlen etter hvert som arbeidet utvikles.
