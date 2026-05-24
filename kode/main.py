@@ -95,12 +95,14 @@ class Bruker(ABC):
         print(f"{self.__navn} har logget ut.")
 
     @abstractmethod
-    def har_tilgang(self, ressurs: str, eier_id: int | None = None) -> bool:
-        """
-        Polymorf metode som gjør at underklassene selv bestemmer
-        hva de har tilgang til.
-        """
-        pass
+    def har_tilgang(self, ressurs: str, eier_id: int | None = None) -> bool: 
+       if ressurs == "pasientjournal":
+            return eier_id == self.bruker_id
+            return False
+       #Innbygger får lese egen journal, men ikke andre ressurser
+    """ Dette er en polymorf metode som gjør at underklassene selv bestemmer
+        hva de har tilgang til."""
+pass
 
 
 class Innbygger(Bruker):
@@ -151,10 +153,9 @@ class Helsepersonell(Bruker):
         print(f"{self.navn} administrerer avtale.")
 
     def har_tilgang(self, ressurs: str, eier_id: int | None = None) -> bool:
-        # Helsepersonell kan bare lese journaler til innbyggere de følger opp.
-        if ressurs == "pasientjournal":
+        if ressurs in ["pasientjournal", "journal_notat"]:
             return eier_id in self.__pasient_ids
-
+# Helsepersonell kan bare lese journaler kun til innbyggere de følger opp.
         return False
 
 
@@ -267,7 +268,7 @@ class Pasientjournal:
     ) -> None:
         tilgang = tilgangskontroll.sjekk_tilgang(
             bruker=bruker,
-            ressurs="pasientjournal",
+            ressurs="journal_notat",
             eier_id=self.__eier_id,
             handling="legg_til_notat"
         )
