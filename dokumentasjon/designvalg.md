@@ -39,4 +39,4 @@ Her får jeg vist:
 | Sikkerhet    | Tilgang sjekkes før journal vises                                 |
 | Logging      | Alle journaloppslag registreres                                   |
 
-Tavlenotatet sier også at OOP gir bedre struktur, enklere vedlikehold, gjenbruk av kode, bedre sikkerhet og enklere videreutvikling, så det passer veldig godt å bruke OOP aktivt i denne oppgaven.
+Jeg valgte OOP fordi det gir en ryddig måte å modellere brukerroller, journaler og tilgangskontroll på. Det gjør også koden enklere å vedlikeholde og videreutvikle.

@@ -13,7 +13,12 @@ Jeg bruker en enkel smidig arbeidsmetode med Kanban i GitHub Projects. Arbeidet 
 - Kort dokumentasjon av krav og designvalg
 - Referanseliste etter APA 7
 
-# Kanban-plan for arbeidskrav 3
+## Arbeidsflyt
+Jeg bruker Kanban med kolonnene Backlog, To do, In progress, In review og Done. Oppgaver flyttes gradvis gjennom tavlen etter hvert som arbeidet utvikles.
+
+# Opprinnelig Kanban-plan
+
+Ved prosjektstart ble følgende oppgaver lagt inn i Backlog:
 
 ## Backlog
 - Lese oppgavetekst
@@ -37,5 +42,3 @@ Jeg bruker en enkel smidig arbeidsmetode med Kanban i GitHub Projects. Arbeidet 
 ## Done
 - Oppgavetekst lest
 
-## Arbeidsflyt
-Jeg bruker Kanban med kolonnene Backlog, To do, In progress, In review og Done. Oppgaver flyttes gradvis gjennom tavlen etter hvert som arbeidet utvikles.
