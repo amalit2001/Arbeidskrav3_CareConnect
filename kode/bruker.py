@@ -45,12 +45,11 @@ class Bruker(ABC):
     
     @abstractmethod
     def har_tilgang(self, ressurs: str, eier_id: int | None = None) -> bool: 
-       if ressurs == "pasientjournal":
-            return eier_id == self.bruker_id
-            return False
-       #Innbygger får lese egen journal, men ikke andre ressurser
-    """ Dette er en polymorf metode som gjør at underklassene selv bestemmer
-        hva de har tilgang til."""
+     """ 
+     Abstrakt metode for tilgangskontroll.
+     Dette er en polymorf metode som gjør at underklassene selv bestemmer
+     hva de har tilgang til.
+     """
 pass
 
 
