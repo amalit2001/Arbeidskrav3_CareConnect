@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtuelle miljøer
+.venv/
+venv/
+
+# Miljøvariabler / hemmeligheter
+.env
+*.env
+*.key
+*.pem
+
+# VS Code lokale innstillinger
+.vscode/
+
+# OS-filer
+.DS_Store
+Thumbs.db

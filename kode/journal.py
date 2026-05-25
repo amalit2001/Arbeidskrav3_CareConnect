@@ -3,13 +3,13 @@ from tilgang import Tilgangskontroll
 
 
 class TilgangAvslåttError(Exception):
-    # Egendefinert unntak som brukes når en bruker ikke har tilgang.
+    # Brukes når en rolle prøver å hente/endre journal med uautorisert tilgang.
     pass
 
 
 class Pasientjournal:
     """
-    Representerer en pasientjournal med sensitive helseopplysninger.
+    Modell for en pasientjournal som inneholder sensitive data.
     """
 
     def __init__(self, journal_id: int, eier_id: int, helseopplysninger: str):
@@ -17,6 +17,7 @@ class Pasientjournal:
         self.__eier_id = eier_id
         self.__helseopplysninger = helseopplysninger
         self.__notater: list[str] = []
+        # Innkapsling for å hindre direkte tilgang til journaldata utenfra.
 
     @property
     def journal_id(self) -> int:
@@ -40,7 +41,7 @@ class Pasientjournal:
 
         if not tilgang:
             raise TilgangAvslåttError(
-                f"Tilgang avslått: {bruker.navn} har ikke tilgang til journal {self.__journal_id}."
+                f"Tilgang avslått: {bruker.navn} har ikke tilgang til å se journal {self.__journal_id}."
             )
 
         return self.__helseopplysninger
@@ -52,6 +53,7 @@ class Pasientjournal:
         tilgangskontroll: Tilgangskontroll
     ) -> None:
         tilgang = tilgangskontroll.sjekk_tilgang(
+        # Journalen returneres kun om tilgangskontrollen godkjenner brukeren.
             bruker=bruker,
             ressurs="journal_notat",
             eier_id=self.__eier_id,
@@ -60,7 +62,7 @@ class Pasientjournal:
 
         if not tilgang:
             raise TilgangAvslåttError(
-                f"Tilgang avslått: {bruker.navn} har ikke tilgang til journal {self.__journal_id}."
+                f"Tilgang avslått: {bruker.navn} har ikke tilgang til å endre journal {self.__journal_id}."
             )
 
         self.__notater.append(notat)
