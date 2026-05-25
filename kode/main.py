@@ -1,17 +1,6 @@
-from __future__ import annotations
-
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
-from datetime import datetime
-import enum
-
-class TilgangAvslåttError(Exception):
-    # Unntak(egendefinert) som brukes når en bruker ikke har tilgang.
-    pass
-
-    def hent_logger(self) -> list[TilgangsloggEntry]:
-        # Gir tilbake en kopi av listen for å beskytte den interne tilstanden.
-        return self.__hendelser.copy()
+from bruker import Innbygger, Helsepersonell, Saksbehandler, Administrator
+from journal import Pasientjournal, TilgangAvslåttError
+from tilgang import Tilgangslogg, Tilgangskontroll
 
     @property
     def bruker_id(self) -> int:
@@ -45,17 +34,6 @@ class TilgangAvslåttError(Exception):
     """ Dette er en polymorf metode som gjør at underklassene selv bestemmer
         hva de har tilgang til."""
 pass
-
-class Pasientjournal:
-    """
-    Representerer en pasientjournal med sensitive helseopplysninger.
-    """
-
-    def __init__(self, journal_id: int, eier_id: int, helseopplysninger: str):
-        self.__journal_id = journal_id
-        self.__eier_id = eier_id
-        self.__helseopplysninger = helseopplysninger
-        self.__notater: list[str] = []
 
     @property
     def journal_id(self) -> int:
