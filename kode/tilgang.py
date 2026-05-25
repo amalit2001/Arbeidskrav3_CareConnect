@@ -35,7 +35,9 @@ class Tilgangslogg:
             resultat=resultat
         )
         self.__hendelser.append(hendelse)
-    ...
+    
+    def hent_logger(self) -> list[TilgangsloggEntry]:
+        return self.__hendelser.copy()
 
 class Tilgangskontroll:
     """

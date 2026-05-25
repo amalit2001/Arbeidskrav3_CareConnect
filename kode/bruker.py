@@ -20,6 +20,41 @@ class Bruker(ABC):
         self.__epost = epost
         self.__rolle = rolle
 
+    @property
+    def bruker_id(self) -> int:
+        return self.__bruker_id
+
+    @property
+    def navn(self) -> str:
+        return self.__navn
+
+    @property
+    def epost(self) -> str:
+        return self.__epost
+
+    @property
+    def rolle(self) -> Rolle:
+        return self.__rolle
+    
+    def logg_inn(self) -> bool:
+        print(f"{self.__navn} har logget inn.")
+        return True
+
+    def logg_ut(self) -> None:
+        print(f"{self.__navn} har logget ut.")
+    
+    @abstractmethod
+    def har_tilgang(self, ressurs: str, eier_id: int | None = None) -> bool: 
+       if ressurs == "pasientjournal":
+            return eier_id == self.bruker_id
+            return False
+       #Innbygger får lese egen journal, men ikke andre ressurser
+    """ Dette er en polymorf metode som gjør at underklassene selv bestemmer
+        hva de har tilgang til."""
+pass
+
+
+
 class Innbygger(Bruker):
     def __init__(self, bruker_id: int, navn: str, epost: str):
         super().__init__(bruker_id, navn, epost, Rolle.INNBYGGER)
