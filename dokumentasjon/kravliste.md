@@ -29,6 +29,10 @@ CareConnect skal være en digital plattform for kommunale helsetjenester. System
 - Skal kunne se tilgangslogger.
 - Skal ikke automatisk ha tilgang til pasientjournaler.
 
+### Varsler og meldinger
+- Systemet skal kunne varsle innbyggere om nye meldinger, avtaleendringer og relevant historikk.
+- Systemet skal støtte sikker kommunikasjon mellom innbygger og helsepersonell.
+
 ## Ikke-funksjonelle krav
 
 ### Sikkerhet
